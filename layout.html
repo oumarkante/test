@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html   xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+		>
+<head>
+<meta charset="utf-8" >
+<title>gestionnaire</title>
+
+<link rel="stylesheet" type ="text/css" href="../static/css/bootstrap.min.css"
+th:href="@{css/bootstrap.min.css}">
+
+<link rel="stylesheet" type ="text/css " href="../static/css/mystyle.css"
+th:href="@{css/mystyle.css}">
+
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="../static/vendors/bootstrap/dist/css/bootstrap.min.css" type ="text/css"  th:href="@{vendors/bootstrap/dist/css/bootstrap.min.css}" >
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../static/vendors/font-awesome/css/font-awesome.min.css" type ="text/css"  th:href="@{vendors/font-awesome/css/font-awesome.min.css}"  >
+	<!-- NProgress -->
+	<link rel="stylesheet" href="../static/vendors/nprogress/nprogress.css" type ="text/css"  th:href="@{vendors/nprogress/nprogress.css}"  >
+	<!-- iCheck -->
+	<link rel="stylesheet" href="../static/vendors/iCheck/skins/flat/green.css" type ="text/css"  th:href="@{vendors/iCheck/skins/flat/green.css}"  >
+
+	<!-- bootstrap-progressbar -->
+	<link rel="stylesheet" href="../static/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" type ="text/css"  th:href="@{vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css} ">
+	<!-- JQVMap -->
+	<link rel="stylesheet" href="../static/vendors/jqvmap/dist/jqvmap.min.css" type ="text/css"  th:href="@{vendors/jqvmap/dist/jqvmap.min.css}"  />
+	<!-- bootstrap-daterangepicker -->
+	<link rel="stylesheet" href="../static/vendors/bootstrap-daterangepicker/daterangepicker.css" type ="text/css"  th:href="@{vendors/bootstrap-daterangepicker/daterangepicker.css}" >
+
+	<!-- Custom Theme Style -->
+	<link rel="stylesheet" href="../static/build/css/custom.min.css" type ="text/css"  th:href="@{build/css/custom.min.css}"  >
+
+
+
+</head>
+
+
+<body class="nav-md footer_fixed">
+
+
+
+
+<section>
+	<div class="container body">
+		<div class="main_container">
+			<div class="col-md-3 left_col  ">
+				<div class="left_col scroll-view">
+					<div class="navbar nav_title" style="border: 0;">
+						<a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span> MEDIATHEQUE </span></a>
+					</div>
+
+					<div class="clearfix"></div>
+
+					<!-- menu profile quick info -->
+					<div class="profile clearfix">
+						<div class="profile_pic">
+							<img src="oo.jpg" alt="..." class="img-circle profile_img">
+						</div>
+						<div class="profile_info">
+							<span>Welcomes,</span>
+							<h2></h2>
+						</div>
+					</div>
+					<!-- /menu profile quick info -->
+
+					<br>
+
+					<!-- sidebar menu -->
+					
+
+					<!-- /sidebar menu2 -->
+					<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section active">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+
+								<li ><a><i class="fa fa-pencil"></i> cours <span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="/ajoutcours">ajout cours  </a></li>
+										<li><a href="/listedescours">liste des cours </a></li>
+
+									</ul>
+								</li>
+
+								<li sec:authorize="hasRole('ROLE_ADMIN')"  ><a><i class="fa fa-book"></i> livres  <span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="/ajoutlivre">ajout livres   </a></li>
+										<li><a href="/listedeslivres">liste des livres  </a></li>
+										<li><a href="/listedeslivresproposer">liste des livres proposés  </a></li>
+									</ul>
+								</li>
+								
+								
+								<li sec:authorize="hasRole('ROLE_ADMIN')"  ><a><i class="fa fa-video-camera"></i> videos<span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="/ajoutvideo">ajout video </a></li>
+										<li><a href="/listedesvideos">liste des videos</a></li>
+										
+									</ul>
+								</li>
+
+								<li sec:authorize="hasRole('ROLE_ADMIN')" ><a><i class="fa fa-users"></i> professeurs<span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="/ajoutprofesseur">ajout professeurs </a></li>
+										<li><a href="/listeprofesseur">liste des professeurs </a></li>
+
+									</ul>
+								</li>
+								<li sec:authorize="hasRole('ROLE_ADMIN')" ><a><i class="fa fa-users"></i> etudiants <span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="/ajoutetudiant">ajout etudiants  </a></li>
+										<li><a href="/listeetudiant">liste des etudiants </a></li>
+
+									</ul>
+								</li >
+							</ul>
+              </div>
+						<div sec:authorize="hasRole('ROLE_ADMIN')"  class="menu_section">
+							<h3>Extra</h3>
+							<ul class="nav side-menu">
+								<li><a ><i class="fa fa-user-secret"></i> admin <span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="/ajoutadmin">ajout admin </a></li>
+										<li><a href="/listeadmin">liste admin</a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+            </div>
+					
+					<!-- /sidebar menu -->
+
+					<!-- /menu footer buttons -->
+					<div class="sidebar-footer hidden-small">
+						<a data-toggle="tooltip" data-placement="top" title="" data-original-title="Settings">
+							<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+						</a>
+						<a data-toggle="tooltip" data-placement="top" title="" data-original-title="">
+							<span class="" aria-hidden="true"></span>
+						</a>
+						<a data-toggle="tooltip" data-placement="top" title="" data-original-title="">
+							<span class="" aria-hidden="true"></span>
+						</a>
+						<a data-toggle="tooltip" data-placement="top" title="" th:href="@{/logout}" data-original-title="Logout">
+							<span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+						</a>
+					</div>
+					<!-- /menu footer buttons -->
+				</div>
+			</div>
+
+			<!-- top navigation -->
+			<div class="top_nav">
+				<div class="nav_menu">
+					<nav>
+						<div class="nav toggle">
+							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
+						</div>
+
+						<ul class="nav navbar-nav navbar-right">
+							<li class="">
+								<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+									<img src="images/img.jpg" alt="">[[${#httpServletRequest.remoteUser }]]
+									<span class=" fa fa-angle-down"></span>
+								</a>
+								<ul class="dropdown-menu dropdown-usermenu pull-right">
+									
+									<li><a href="/etudiant">Acceuil</a></li>
+									<li><a th:href="@{/logout}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+								</ul>
+							</li>
+
+							
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<!-- /top navigation -->
+
+			<!-- page content -->
+
+
+			<div class="right_col" role="main" style="min-height: 883px;">
+				<section layout:fragment="content">
+
+				</section>
+
+			</div>
+			<!-- /page content -->
+
+			<!-- footer content -->
+			<footer>
+				<div class="pull-right">
+					gestion de la mediatheque <a href="https://colorlib.com">de l'agetic</a>
+				</div>
+				<div class="clearfix"></div>
+			</footer>
+			<!-- /footer content -->
+		</div>
+	</div>
+
+	<!-- jQuery -->
+	<script src="../vendors/jquery/dist/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+	<!-- FastClick -->
+	<script src="../vendors/fastclick/lib/fastclick.js"></script>
+	<!-- NProgress -->
+	<script src="../vendors/nprogress/nprogress.js"></script>
+	<!-- Chart.js -->
+	<script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+	<!-- gauge.js -->
+	<script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+	<!-- bootstrap-progressbar -->
+	<script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+	<!-- iCheck -->
+	<script src="../vendors/iCheck/icheck.min.js"></script>
+	<!-- Skycons -->
+	<script src="../vendors/skycons/skycons.js"></script>
+	<!-- Flot -->
+	<script src="../vendors/Flot/jquery.flot.js"></script>
+	<script src="../vendors/Flot/jquery.flot.pie.js"></script>
+	<script src="../vendors/Flot/jquery.flot.time.js"></script>
+	<script src="../vendors/Flot/jquery.flot.stack.js"></script>
+	<script src="../vendors/Flot/jquery.flot.resize.js"></script>
+	<!-- Flot plugins -->
+	<script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+	<script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+	<script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+	<!-- DateJS -->
+	<script src="../vendors/DateJS/build/date.js"></script>
+	<!-- JQVMap -->
+	<script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
+	<script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+	<script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+	<!-- bootstrap-daterangepicker -->
+	<script src="../vendors/moment/min/moment.min.js"></script>
+	<script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script src="../vendors/echarts/dist/echarts.min.js"></script>
+	
+	<!-- Datatables -->
+    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+
+	<!-- Custom Theme Scripts -->
+	<script src="../build/js/custom.js"></script>
+	<script th:inline="javascript" src="../build/js/customdatapresentations.js"></script>
+</section>
+
+
+
+
+
+<div class="jqvmap-label" style="display: none;"></div>
+<div class="daterangepicker ltr show-ranges opensleft">
+	<div class="ranges">
+		<ul>
+			<li data-range-key="Today">Today</li>
+			<li data-range-key="Yesterday">Yesterday</li>
+			<li data-range-key="Last 7 Days">Last 7 Days</li>
+			<li data-range-key="Last 30 Days">Last 30 Days</li>
+			<li data-range-key="This Month">This Month</li>
+			<li data-range-key="Last Month">Last Month</li>
+			<li data-range-key="Custom">Custom</li>
+		</ul>
+	</div>
+	<div class="drp-calendar left">
+		<div class="calendar-table"></div>
+		<div class="calendar-time" style="display: none;"></div>
+	</div>
+	<div class="drp-calendar right">
+		<div class="calendar-table"></div>
+		<div class="calendar-time" style="display: none;"></div>
+	</div>
+	<div class="drp-buttons"><span class="drp-selected"></span>
+		<button class="cancelBtn btn btn-default btn-small" type="button">Clear</button>
+		<button class="applyBtn btn btn-default btn-small btn-primary" disabled="disabled" type="button">Submit</button>
+	</div>
+</div>
+
+</body>
+
+
+</html>
